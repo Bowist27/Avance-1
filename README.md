@@ -32,6 +32,7 @@ Regresar Resultado
 
 Salida
 
-Resultado (tabla y números)
+Resultado (tabla y números) 
+Comparación visual
 
 '''
