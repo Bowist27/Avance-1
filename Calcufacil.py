@@ -1,4 +1,7 @@
+'''
 # Primero saltará una interfaz gráfica al empezar el programa, esta cuenta con un menú
+'''
+'''
 import tkinter as tk
 
 #Colores Primera Parte
@@ -21,11 +24,12 @@ fondo1 = tk.Label(ventana, image=fondo).place(x=0, y=0, relwidth=1, relheight=1 
 #Creacion de Botones
 botón1 = tk.Button(ventana, text='Entrar', cursor='hand2', bg = fondo_entrar, width= 10, relief='flat', font=("Comic Sans MS", 20, "bold"))
 botón1.place(x=1450, y=800)
-
-
-
+'''
+#Ya se hicieron los botones de la primera interfaz que tiene de fondo la entrada al programa asi como la de negativa en caso de falla de contraseña
+# Se deja pendiente el tutorial de la interfaz gráfica
 
 '''
+
 lbl_Bienvenida=Label(text='Bienvenido a la calculadora de impuestos selecciona el ')
 
 #Creación de Etiquetas de texto
@@ -45,9 +49,11 @@ barraMenu.add_cascade(label='Archivo',menu=mnuArchivo)
 mnuArchivo.add_checkbutton(delattr(label))
 
 ventana.config(menu=barraMenu)
-'''
+
 
 ventana.mainloop()
+'''
+
 
 
 
@@ -56,10 +62,6 @@ ventana.mainloop()
 #Creación de tutorial para aprender a usar programa básico, son tres paginas
 
 #Contraseña para poder iniciar la interfaz grafica.
-
-#Propuesta de red neuronal para ingresar datos como dibujo y que los detecte como numeros en el menú
-
-
 
 
 
@@ -70,14 +72,28 @@ ventana.mainloop()
 def Bienvenida ():
     print('Bienvenido al sistema de calculación de impuestos 2070')
 
+#Se hizo uso de un usuario y contraseña para poder acceder al codigo, se hizo uso de un for in range para dar limite de 3 intentos.
 
-def Usuario():
-    Usuario= int(input('Ingrese Usuario'))
+def Usuario_Contraseña():
+    Usuario1='Usuario1'
+    Usuario2='Usuario2'
+    contraseña1="25632"
+    contraseña2="36985"
+    for i in range(1,4):
+        d=input("USUARIO: ")
+        c=input("CONTRASEÑA: ")
+        if c == contraseña1 or c == contraseña2 or d == Usuario1 or d == Usuario2:
+            print("\nEl Usuario y contraseña son correctos!!!\n")
+            break
+        else:
+            print(f"\nLa Contraseña o el Usuario es Incorrecta, alejate niño. Lleva {i} intento/s de 3\n")
+            if i == 3:
+                print("\nHA FALLADO LOS 3 INTENTOS SALGA DEL PROGRAMA Y VUELVA A INTENTAR\n")
+                break
 
-def Contraseña():
-    Contraseña= int(input('Ingrese Contraseña'))
 
-# La prediccion se le hará solo si es que el cliente pide
+
+# La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 def Predicción_cliente ():
     predicción = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?')) 
 
@@ -85,6 +101,7 @@ def Predicción_cliente ():
 
 def Predicción_Salario():
     salario= float(input('Escribe tu salario mensual?'))
+
     if salario <= 7734:
         impuestos = (salario * .0192)
         
@@ -101,17 +118,26 @@ def Predicción_Salario():
 
 
 
+
 def Predicción_Productos():
-    print('jijiji2ja')
+    producto= input('Tu producto es libro, joyeria o arte')
+    if producto == ('Si') or producto == ('si'):
+        print('No pagas Impuesto de ese producto')
+    else:
+        precioproducto= int(input('Cuánto te costó el producto?'))
+        precioproductofinal= precioproducto*.16
+        sumaprecios= precioproductofinal + precioproducto
+        print('El producto cuenta con un precio de impuestos de',sumaprecios, 'pesos')
+
 
 def Predicción_Productos_Importados():
-    print(a)
-
+    print('Esta area sigue en mantenimiento, vuelva pronto :D')
 
 
 
 
 # Se asigna un menú para que este diga que tipo de impuestos va a querer calcular. 
+#Propuesta de red neuronal para ingresar datos como dibujo y que los detecte como numeros en el menú
 
 def menu():
     print('Este es el Menu principal seleccione la opcion que esté buscando')
@@ -122,11 +148,11 @@ def menu():
         
 
 
-# Al querer calcular mas impuestos, este entrará en un ciclo While True, mientras quiera seguir añadiendo más
-# este tendrá que escribir la palabra 'Si'. 
+# Al querer calcular mas impuestos, este entrará en un ciclo While True, esto debido a que en la interfaz grafica se podra seguri calculando sin necesidad de cerrar y volver a iniciar el programa.
 
 def main ():
     Bienvenida()
+    Usuario_Contraseña()
     Predicción_cliente()
     while(True):
         menu()
