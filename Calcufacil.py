@@ -70,7 +70,7 @@ def Bienvenida ():
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 def Predicción_cliente ():
     predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?')) 
-
+####matplotlib agregar para 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
 
 def Predicción_Salario():
@@ -116,6 +116,10 @@ def Predicción_Productos():
 def Predicción_Productos_Importados():
     print('Esta area sigue en mantenimiento, vuelva pronto :D')
 
+# Peni
+#def Porque_pagar_impuestos():
+ #   print('El pagar impuestos es importante', UsuarioIntroducido, 'Recuerda que ayuda al bienestar de la ciudad')
+
 
 # Se asigna un menú para que este diga que tipo de impuestos va a querer calcular. 
 
@@ -140,14 +144,15 @@ def menu():
 
 def main ():
     Bienvenida()
-    Usuario1 ='Usuario1'
-    Usuario2 ='Usuario2'
+    #Usuarios tienen que ser tomados de un servidor con sql, dirigidos a un hash para una mejor seguridad 
+    user1 ='Usuario1'
+    user2 ='Usuario2'
     contraseña1 ="25632"
     contraseña2 ="36985"
     for i in range(1,4):
         user = input( "USUARIO: ")
         password = input( "CONTRASEÑA: ")
-        if password == contraseña1 or password == contraseña2 or user == Usuario1 or user == Usuario2:
+        if password == contraseña1 and user1 == user or password == contraseña2 and user == user2:
             print("\nEl Usuario y contraseña son correctos!!!\n")
             Predicción_cliente()
             while(True):
