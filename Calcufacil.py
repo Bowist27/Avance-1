@@ -70,7 +70,7 @@ def Bienvenida ():
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 def Predicción_cliente ():
     predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?')) 
-####matplotlib agregar para 
+#matplotlib agregar para 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
 
 def Predicción_Salario():
