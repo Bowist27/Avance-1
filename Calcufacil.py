@@ -1,3 +1,4 @@
+import pprint
 '''
 # Primero saltará una interfaz gráfica al empezar el programa, esta cuenta con un menú
 '''
@@ -60,6 +61,7 @@ ventana.mainloop()
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
 
 
+
 def Bienvenida ():
     print('Bienvenido al sistema de calculación de impuestos 2070')
 
@@ -68,8 +70,7 @@ def Bienvenida ():
 
 
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
-def Predicción_cliente ():
-    predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?')) 
+
 #matplotlib agregar para 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
 
@@ -96,15 +97,16 @@ def Predicción_Salario():
 
 def Predicción_Productos():
     producto= input('Tu producto es libro, joyeria o arte')
-    if producto == ('Si') or producto == ('si') or producto == ('S'):
+    lista_productos = ['Si','si','S','libro','libr','librp','joyeria','joyería','joyeri','arte','art','rte']
+    if producto == (lista_productos[0]) or producto == (lista_productos[1]) or producto == (lista_productos[2]):
         print('No pagas Impuesto de ese producto')
-    elif producto == ('libro') or producto == ('libr') or producto == ('librp'):
-        print('No pagas Impuesto de ese producto')
-
-    elif producto == ('joyeria') or producto == ('joyería') or producto == ('joyeri'):
+    elif producto == (lista_productos[3]) or producto == (lista_productos[4]) or producto == (lista_productos[5]):
         print('No pagas Impuesto de ese producto')
 
-    elif producto == ('arte') or producto == ('art') or producto == ('rte'):
+    elif producto == (lista_productos[6]) or producto == (lista_productos[7]) or producto == (lista_productos[8]):
+        print('No pagas Impuesto de ese producto')
+
+    elif producto == (lista_productos[9]) or producto == (lista_productos[10]) or producto == (lista_productos[11]):
         print('No pagas Impuesto de ese producto')
         
     else:
@@ -116,23 +118,13 @@ def Predicción_Productos():
 def Predicción_Productos_Importados():
     print('Esta area sigue en mantenimiento, vuelva pronto :D')
 
-# Peni
-#def Porque_pagar_impuestos():
- #   print('El pagar impuestos es importante', UsuarioIntroducido, 'Recuerda que ayuda al bienestar de la ciudad')
 
 
 # Se asigna un menú para que este diga que tipo de impuestos va a querer calcular. 
-
-#Propuesta de red neuronal para ingresar datos como dibujo y que los detecte como numeros en el menú
-
-
+#Uso de separacion de menus con listas y saltos de linea
 def menu():
-    print('Este es el Menu principal seleccione la opcion que esté buscando')
-    print("1. Predecir Impuesto De Salario")
-    print("2. Predecir Impuesto de Productos")
-    print("3. Predecir Impuesto de Productos Importados")
-    print("4. Salir")
-        
+    lista_menu = ['Este es el Menu principal seleccione la opcion que esté buscando', '1. Predecir Impuesto De Salario','2. Predecir Impuesto de Productos','3. Predecir Impuesto de Productos Importados', '4. Salir']
+    print(lista_menu[0],'\n',lista_menu[1],'\n',lista_menu[2],'\n',lista_menu[3])      
 
 
 # Al querer calcular mas impuestos, este entrará en un ciclo While True, esto debido a que en la interfaz grafica se podra seguri calculando sin necesidad de cerrar y volver a iniciar el programa.
@@ -145,27 +137,37 @@ def menu():
 def main ():
     Bienvenida()
     #Usuarios tienen que ser tomados de un servidor con sql, dirigidos a un hash para una mejor seguridad 
-    user1 ='Usuario1'
-    user2 ='Usuario2'
-    contraseña1 ="25632"
-    contraseña2 ="36985"
+    lista_users = ['Usuario1','Usuario2']
+    lista_passwords = ['25632','36985','111','222','333','555']
+
     for i in range(1,4):
         user = input( "USUARIO: ")
         password = input( "CONTRASEÑA: ")
-        if password == contraseña1 and user1 == user or password == contraseña2 and user == user2:
+        if password == lista_passwords[0] and user == lista_users[0] or password == lista_passwords[1] and user == lista_users[1]:
             print("\nEl Usuario y contraseña son correctos!!!\n")
-            Predicción_cliente()
             while(True):
+                #Prediccion de cliente se mueve al ccilo while para que le pregunte con cada prediccion
+                predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?'))
+                #Uso de matriz para guardar datos para finalizar con comparación en grafica scaando el dato de la matriz con el dato resultante
+                matriz = []
+                for a in range(0,1):
+                    lista = []
+                    matriz.append(lista)
+                    for b in range(0,1):
+                        lista.append(predicción_2)
+                    
                 menu()
                 opcion = (input( ))
                 if opcion=='1':
                     Predicción_Salario()
+
+                    print (listap)
         
                 elif opcion == '2':
                     Predicción_Productos()
 
                 elif opcion == '3':
-                    Predicción_cliente()
+                    print('Si')
             
                 elif opcion == '4':
                     print("Adios, tenga buen día")
