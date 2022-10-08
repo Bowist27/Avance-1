@@ -118,8 +118,9 @@ def Predicción_Productos(predicción_2,producto,precioproducto):
         
     else:
         
-        precioproductofinal= precioproducto*.16
-        precioimpuestos = precioproducto - precioproductofinal
+        precioproductoimp = precioproducto*.16
+        precioproductofinal = precioproductoimp + precioproducto
+        precioimpuestos = precioproductofinal - precioproducto
         print('El producto cuenta con un precio de impuestos de',precioimpuestos,'pesos, quedando entonces el producto con un precio total de',precioproductofinal, 'pesos')
         matriz = [[predicción_2],[precioimpuestos]]
         #Se hará comparacion entre los dos datos de la matriz para hacer una grafica con una biblioteca
@@ -134,7 +135,7 @@ def Predicción_Productos_Importados():
 #Uso de separacion de menus con listas y saltos de linea
 def menu():
     lista_menu = ['Este es el Menu principal seleccione la opcion que esté buscando', '1. Predecir Impuesto De Salario','2. Predecir Impuesto de Productos','3. Predecir Impuesto de Productos Importados', '4. Salir']
-    print(lista_menu[0],'\n',lista_menu[1],'\n',lista_menu[2],'\n',lista_menu[3])      
+    print(lista_menu[0],'\n',lista_menu[1],'\n',lista_menu[2],'\n',lista_menu[3],'\n',lista_menu[4])      
 
 
 # Al querer calcular mas impuestos, este entrará en un ciclo While True, esto debido a que en la interfaz grafica se podra seguri calculando sin necesidad de cerrar y volver a iniciar el programa.
@@ -196,5 +197,5 @@ def main ():
                 print("\nHA FALLADO LOS 3 INTENTOS SALGA DEL PROGRAMA Y VUELVA A INTENTAR\n")
                 break
   
-# main()
+#main()
 Prueba()
