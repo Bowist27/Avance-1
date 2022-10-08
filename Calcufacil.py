@@ -54,8 +54,6 @@ ventana.mainloop()
 
 #Contraseña para poder iniciar la interfaz grafica.
 
-
-
 # Aquí empieza codigo de programa
 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
@@ -66,8 +64,6 @@ def Bienvenida ():
     print('Bienvenido al sistema de calculación de impuestos 2070')
 
 #Se hizo uso de un usuario y contraseña para poder acceder al codigo, se hizo uso de un for in range para dar limite de 3 intentos.
-
-
 
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 
@@ -139,7 +135,7 @@ def main ():
     #Usuarios tienen que ser tomados de un servidor con sql, dirigidos a un hash para una mejor seguridad 
     lista_users = ['Usuario1','Usuario2']
     lista_passwords = ['25632','36985','111','222','333','555']
-
+#Se hace uso de un for in debido a que en la interfaz grafica se necesita que no cierre el programa completamente, solo que vuelva a iniciar en la parte del menu y predicciones.
     for i in range(1,4):
         user = input( "USUARIO: ")
         password = input( "CONTRASEÑA: ")
