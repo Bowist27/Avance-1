@@ -1,4 +1,5 @@
 import pprint
+from tkinter import CASCADE
 '''
 # Primero saltará una interfaz gráfica al empezar el programa, esta cuenta con un menú
 '''
@@ -54,6 +55,8 @@ ventana.mainloop()
 
 #Contraseña para poder iniciar la interfaz grafica.
 
+
+
 # Aquí empieza codigo de programa
 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
@@ -64,6 +67,28 @@ def Bienvenida ():
     print('Bienvenido al sistema de calculación de impuestos 2070')
 
 #Se hizo uso de un usuario y contraseña para poder acceder al codigo, se hizo uso de un for in range para dar limite de 3 intentos.
+
+def MatrizComparativa ():
+    matriz = []
+    filas = 2
+    columnas = 2
+    for i in range(filas):
+        matriz.append([])
+        for j in range(columnas):
+            valor = float(input("Fila {}, Columna {} : ".format(i+1, j+1)))
+            matriz[i].append(valor)
+
+    print()
+    for fila in matriz:
+        print("[", end= " ")
+        for elemento in fila:
+            print("{}".format(elemento),end=" ")
+            print("]")
+    print()
+
+        
+
+
 
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 
@@ -86,6 +111,8 @@ def Predicción_Salario():
         impuestos = (salario * .16)
 
     print('Tu debes', impuestos, 'borregoPesos de Impuestos')
+
+    return impuestos
 
 
 
@@ -110,6 +137,7 @@ def Predicción_Productos():
         precioproductofinal= precioproducto*.16
         precioimpuestos = precioproductofinal-precioproducto
         print('El producto cuenta con un precio de impuestos de',precioimpuestos,'pesos, quedando entonces el producto con un precio total de',precioproductofinal, 'pesos')
+        return precioimpuestos
 
 def Predicción_Productos_Importados():
     print('Esta area sigue en mantenimiento, vuelva pronto :D')
@@ -125,6 +153,7 @@ def menu():
 
 # Al querer calcular mas impuestos, este entrará en un ciclo While True, esto debido a que en la interfaz grafica se podra seguri calculando sin necesidad de cerrar y volver a iniciar el programa.
 
+#def crear_matriz():
 
 # Los usuarios van a ser algunos que yo ponga en una pagina y automaticamente se iran actualizando, necesita el uso de conexion en linea
 
@@ -133,37 +162,43 @@ def menu():
 def main ():
     Bienvenida()
     #Usuarios tienen que ser tomados de un servidor con sql, dirigidos a un hash para una mejor seguridad 
-    lista_users = ['Usuario1','Usuario2']
+    lista_users = ['Usuario1','Usuario2','Usuario3','Usuario4','Usuario5','Usuario6']
     lista_passwords = ['25632','36985','111','222','333','555']
-#Se hace uso de un for in debido a que en la interfaz grafica se necesita que no cierre el programa completamente, solo que vuelva a iniciar en la parte del menu y predicciones.
+
     for i in range(1,4):
         user = input( "USUARIO: ")
         password = input( "CONTRASEÑA: ")
-        if password == lista_passwords[0] and user == lista_users[0] or password == lista_passwords[1] and user == lista_users[1]:
+        if password == lista_passwords[0] and user == lista_users[0] or password == lista_passwords[1] and user == lista_users[1] or password == lista_passwords[2] and user == lista_users[2] or password == lista_passwords[3] and user == lista_users[3] or password == lista_passwords[4] and user == lista_users[4] or password == lista_passwords[5] and user == lista_users[5]:
             print("\nEl Usuario y contraseña son correctos!!!\n")
             while(True):
                 #Prediccion de cliente se mueve al ccilo while para que le pregunte con cada prediccion
                 predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?'))
                 #Uso de matriz para guardar datos para finalizar con comparación en grafica scaando el dato de la matriz con el dato resultante
-                matriz = []
-                for a in range(0,1):
-                    lista = []
-                    matriz.append(lista)
-                    for b in range(0,1):
-                        lista.append(predicción_2)
-                    
+                matriz = [[predicción_2],[]]
+
                 menu()
-                opcion = (input( ))
+                opcion = (input())
+
                 if opcion=='1':
                     Predicción_Salario()
+            
+                    matriz = [[predicción_2],['impuestos']]
+                    #despues se manda a funcion y a libreria para hacer una grafica de comparacion
+                    print(matriz)
+                    
 
-                    print (listap)
         
                 elif opcion == '2':
                     Predicción_Productos()
+                    matriz = [[predicción_2],['prediccion_impuestos']]
+
+                    #despues se manda a funcion y a libreria para hacer una grafica de comparacion
 
                 elif opcion == '3':
                     print('Si')
+                    matriz = [[predicción_2],['impuestos']]
+
+                    #despues se manda a funcion y a libreria para hacer una grafica de comparacion
             
                 elif opcion == '4':
                     print("Adios, tenga buen día")
