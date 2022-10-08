@@ -1,4 +1,3 @@
-import pprint
 from tkinter import CASCADE
 '''
 # Primero saltará una interfaz gráfica al empezar el programa, esta cuenta con un menú
@@ -68,35 +67,19 @@ def Bienvenida ():
 
 #Se hizo uso de un usuario y contraseña para poder acceder al codigo, se hizo uso de un for in range para dar limite de 3 intentos.
 
-def MatrizComparativa ():
-    matriz = []
-    filas = 2
-    columnas = 2
-    for i in range(filas):
-        matriz.append([])
-        for j in range(columnas):
-            valor = float(input("Fila {}, Columna {} : ".format(i+1, j+1)))
-            matriz[i].append(valor)
+#Funcion de prueba para evaluar el codigo 
+def Prueba():
+    Predicción_Salario(500,200,0)
+    Predicción_Productos(50,'No',500)
 
-    print()
-    for fila in matriz:
-        print("[", end= " ")
-        for elemento in fila:
-            print("{}".format(elemento),end=" ")
-            print("]")
-    print()
-
-        
-
-
+    # Predicción_Productos('Si')
 
 # La prediccion se hace al principio para despues comparar su resultado de un unico impuesto o suma de estos.
 
 #matplotlib agregar para 
 #Se hacen funciones pues al seleccionar un boton en la interfaz gráfica este iniciará la función
 
-def Predicción_Salario():
-    salario= float(input('Escribe tu salario mensual?'))
+def Predicción_Salario(salario,predicción_2,impuestos):
 
     if salario <= 7734:
         impuestos = (salario * .0192)
@@ -112,15 +95,16 @@ def Predicción_Salario():
 
     print('Tu debes', impuestos, 'borregoPesos de Impuestos')
 
-    return impuestos
-
+    matriz = [[predicción_2],[impuestos]]
+    print(matriz)
 
 
 #Aun así cuenta con errores gramáticales 
 
-def Predicción_Productos():
-    producto= input('Tu producto es libro, joyeria o arte')
+def Predicción_Productos(predicción_2,producto,precioproducto):
+
     lista_productos = ['Si','si','S','libro','libr','librp','joyeria','joyería','joyeri','arte','art','rte']
+    
     if producto == (lista_productos[0]) or producto == (lista_productos[1]) or producto == (lista_productos[2]):
         print('No pagas Impuesto de ese producto')
     elif producto == (lista_productos[3]) or producto == (lista_productos[4]) or producto == (lista_productos[5]):
@@ -133,14 +117,16 @@ def Predicción_Productos():
         print('No pagas Impuesto de ese producto')
         
     else:
-        precioproducto= int(input('Cuánto te costó el producto?'))
+        
         precioproductofinal= precioproducto*.16
-        precioimpuestos = precioproductofinal-precioproducto
+        precioimpuestos = precioproducto - precioproductofinal
         print('El producto cuenta con un precio de impuestos de',precioimpuestos,'pesos, quedando entonces el producto con un precio total de',precioproductofinal, 'pesos')
-        return precioimpuestos
+        matriz = [[predicción_2],[precioimpuestos]]
+        #Se hará comparacion entre los dos datos de la matriz para hacer una grafica con una biblioteca
+        print(matriz)
 
 def Predicción_Productos_Importados():
-    print('Esta area sigue en mantenimiento, vuelva pronto :D')
+    print('Esta area sigue en mantenimiento, vuelva pronto :{')
 
 
 
@@ -172,34 +158,33 @@ def main ():
             print("\nEl Usuario y contraseña son correctos!!!\n")
             while(True):
                 #Prediccion de cliente se mueve al ccilo while para que le pregunte con cada prediccion
-                predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?'))
                 #Uso de matriz para guardar datos para finalizar con comparación en grafica scaando el dato de la matriz con el dato resultante
-                matriz = [[predicción_2],[]]
 
                 menu()
                 opcion = (input())
 
                 if opcion=='1':
-                    Predicción_Salario()
-            
-                    matriz = [[predicción_2],['impuestos']]
+                    predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?'))
+                    impuestos = 0
+                    salario= float(input('Escribe tu salario mensual?'))
+                    Predicción_Salario(salario, predicción_2, impuestos)
+                
+                
                     #despues se manda a funcion y a libreria para hacer una grafica de comparacion
-                    print(matriz)
                     
 
-        
                 elif opcion == '2':
-                    Predicción_Productos()
-                    matriz = [[predicción_2],['prediccion_impuestos']]
+                    predicción_2 = float(input('Cuanto crees que pagarás de impuestos al finalizar el cálculo?'))
+                    producto= input('Tu producto es libro, joyeria o arte')
+                    precioproducto= int(input('Cuánto te costó el producto?'))
+                    Predicción_Productos(predicción_2,producto, precioproducto)
+                    
 
                     #despues se manda a funcion y a libreria para hacer una grafica de comparacion
 
                 elif opcion == '3':
                     print('Si')
-                    matriz = [[predicción_2],['impuestos']]
-
                     #despues se manda a funcion y a libreria para hacer una grafica de comparacion
-            
                 elif opcion == '4':
                     print("Adios, tenga buen día")
                     break
@@ -211,4 +196,5 @@ def main ():
                 print("\nHA FALLADO LOS 3 INTENTOS SALGA DEL PROGRAMA Y VUELVA A INTENTAR\n")
                 break
   
-main()
+# main()
+Prueba()
